@@ -4,7 +4,7 @@ const router = require("express").Router();
 // const apiRoutes =
 const apiRoutes = require("./api");
 // const homeRoutes =
-const homeRoutes = require("./home-routes.js");
+const homeRoutes = require("./homeRoutes.js");
 // const dashboardRoutes =
 const dashboardRoutes = require("./dashboard-routes.js");
 
@@ -15,7 +15,10 @@ router.use("/api", apiRoutes);
 // dashboard routes
 router.use("/dashboard", dashboardRoutes);
 
-// should we create a catch all
+// create a catch all
+router.use((req, res) => {
+  res.status(404).end();
+});
 
 
 module.exports = router;
