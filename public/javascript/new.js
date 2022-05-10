@@ -4,19 +4,22 @@ const newFormHandler = async function (event) {
   const title = document.querySelector('input[name="post-title"]').value;
   const body = document.querySelector('textarea[name="post-body"]').value;
 
+// new user input
+  const token = localStorage.getItem("token");
   await fetch(`/api/post`, {
     // Create the functionality to help create the buttons for your website.
-    method: "post",
+    method: "POST",
     body: JSON.stringify({
-      username,
-      password,
+      title,
+      body,
     }),
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`
+    }
   });
-  if (response.ok) {
-    alert("Account created! Logging you in.");
-    document.location.replace("/dashboard");
-  }
+    
+  document.location.replace("/dashboard");
 };
 document
   .querySelector("#new-post-form")

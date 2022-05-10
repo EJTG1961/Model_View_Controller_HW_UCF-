@@ -3,25 +3,21 @@ const loginFormHandler = async function (event) {
 
   const usernameEl = document.querySelector("#username-input-login");
   const passwordEl = document.querySelector("#password-input-login");
-
-  if (username && password) {
-    const response = await fetch("/api/user/login", {
-      // Create the functionality to help create the buttons for your website.
-      method: "post",
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (response.ok) {
+  // user login form
+  fetch("/api/user/login", {
+    method: "post",
+    body: JSON.stringify({
+      username: usernameEl.value,
+      password: passwordEl.value,
+    }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then(function () {
       document.location.replace("/dashboard");
-    } else {
-      alert("Failed to login");
-    }
-  }
+    })
+    .catch((err) => console.log(err));
 };
+  
 
 document
   .querySelector("#login-form")

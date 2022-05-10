@@ -1,16 +1,15 @@
-const logout = async function() {
-    const response = await fetch("/api/user/logout", {
-      // Create the functionality to help create the buttons for your website.
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-    });
-  
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert('Failed to log out');
-    }
-  };
+function logout() {
+  // log out the user
+  // Create the functionality to help create the buttons for your website.
+  fetch("/api/user/logout", {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+  })
+    .then(function () {
+      document.location.replace("/");
+    })
+    .catch((err) => console.log(err));
+} 
   
   document.querySelector('#logout-link').addEventListener('click', logout);
   

@@ -3,24 +3,21 @@ const signupFormHandler = async function (event) {
 
   const usernameEl = document.querySelector("#username-input-signup");
   const passwordEl = document.querySelector("#password-input-signup");
-
-  const response = await fetch("/api/user", {
+// signup Form
+  fetch("/api/user", {
     // Create the functionality to help create the buttons for your website.
 
-    method: "post",
+    method: "POST",
     body: JSON.stringify({
-      username,
-      email,
-      password,
+      username: usernameEl.value,
+      password: passwordEl.value,
     }),
     headers: { "Content-Type": "application/json" },
-  });
-
-  if (response.ok) {
-    document.location.replace("/dashboard");
-  } else {
-    alert("Failed to sign up");
-  }
+  })
+    .then(function () {
+      document.location.replace("/dashboard");
+    })
+    .catch((err) => console.log(err));
 };
 
 document

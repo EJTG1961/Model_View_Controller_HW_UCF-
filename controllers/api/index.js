@@ -1,4 +1,4 @@
-const { route } = require("../../../.Main/controllers/api");
+// const { route } = require("../../../.Main/controllers/api");
 
 const router = require("express").Router();
 
@@ -11,8 +11,8 @@ const postRoutes = require("./post-routes");
 const commentRoutes = require("./comment-routes");
 
 // write the rest of the router.use routes
-router.use("/users", userRoutes);
-router.use("/posts", postRoutes);
-router.use("/comments", commentRoutes);
+router.use("/user", userRoutes);
+router.use("/post", postRoutes);
+router.use("/comment", commentRoutes);
 
 module.exports = router;
