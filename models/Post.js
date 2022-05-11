@@ -1,6 +1,6 @@
 // Dependencies
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../config/config');
 
 // Post extends the sequelize model  
 // define configuration,
